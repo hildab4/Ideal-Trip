@@ -31,5 +31,5 @@ Los datos se encuentran en el archivo puntos.txt, con estos se cargan los datos 
 ## Hace un análisis de complejidad correcto y completo para todo el programa y sus componentes
 * loadGraphList -> El algoritmo lee un archivo y el tiempo que tarda en completar la lectura depende de la cantidad de líneas en el archivo; por lo tanto la complejidad temporal es de O(n) para el peor de los casos.
 * BFS -> El algoritmo recorre los nodos y los bordes de la lista de adyacencia, debido a que debe de recorrer todos en el peor de los casos, la complejidad temporal es de O(n+b). Donde n es la cantidad de nodos y b es la cantidad de bordes.
-* loadHash -> 
+* loadHash -> El algoritmo obtiene el índice para la llave, pero en caso de alguna colisión se tendrá que buscar otra posición; por lo que la complejidad temporal es de O(n) para el peor de los casos.
 * get -> El algoritmo obtiene el índice para la llave, pero en caso de alguna colisión se tendrá que recorrer toda la tabla hasta encontrar el valor; por lo que la complejidad temporal es de O(n) para el peor de los casos.
