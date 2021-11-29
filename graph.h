@@ -24,7 +24,6 @@ class Graph {
         void addEdgeAdjList(int u, int v);
         void addEdgeAdjMatrix(int u, int v);
         void sortAdjList();
-        void dfsHelper(int inicial, int meta, stack<int> &s, list<int> &visited, vector<vector<int>> &paths);
         void bfsHelper(int inicial, int meta, queue<int> &q, list<int> &visited, vector<vector<int>> &paths);
         string printPaths(vector<vector<int>> &paths, int inicial, int meta);
         string printVisited(list<int> visited);
@@ -34,10 +33,7 @@ class Graph {
         Graph();
         Graph(int n);
         void loadGraphList(string file, int n, int m);
-        void loadGraphMat(string file, int n, int m);
-        string printAdjMat();
         string printAdjList();
-        string DFS(int inicial, int meta);
         string BFS(int inicial, int meta);
 };
 
@@ -61,12 +57,6 @@ void Graph::addEdgeAdjList(int u, int v) {
     edgesList++;
 }
 
-void Graph::addEdgeAdjMatrix(int u, int v) {
-    adjMatrix[u*nodes+v] = 1;
-    adjMatrix[v*nodes+u] = 1;
-    edgesMat++;
-}
-
 void Graph::loadGraphList(string file, int n, int m) {
     adjList = new vector<int> [n];
     nodes = n;
@@ -85,38 +75,6 @@ void Graph::loadGraphList(string file, int n, int m) {
     else {
         cout << "Unable to open file" << endl;
     }
-}
-
-void Graph::loadGraphMat(string file, int n, int m) {
-    adjMatrix = new int [n*m];
-    nodes = n;
-    for (int i = 0; i < n*m; i++) {
-        adjMatrix[i] = 0;
-        string line;
-        ifstream lee(file);
-        int u, v;
-        if (lee.is_open()) {
-            while (getline(lee, line)) {
-                u = stoi(line.substr(1,1));
-                v = stoi(line.substr(4,1));
-                addEdgeAdjMatrix(u, v);
-            }
-            lee.close();
-        }
-        else {
-            cout << "Unable to open file" << endl;
-        }
-    }
-}
-
-string Graph::printAdjMat() {
-    stringstream aux;
-    for (int i = 0; i < nodes; i++) {
-        for (int j = 0; j < nodes; j++) {
-            aux << adjMatrix[i*nodes+j] << ' ';
-        }
-    }
-    return aux.str();
 }
 
 string Graph::printAdjList() {
@@ -138,39 +96,6 @@ void Graph::sortAdjList() {
     }
 }
 
-string Graph::DFS(int inicial, int meta) {
-    stringstream aux;
-    stack <int> s;
-    list <int> visited;
-    vector<vector<int>> paths(nodes, vector<int>(1, -1));
-    s.push(inicial);
-    dfsHelper(inicial, meta, s, visited, paths);
-    aux << printVisited(visited);
-    aux << printPaths(paths, inicial, meta);
-    return aux.str();
-}
-
-void Graph::dfsHelper(int inicial, int meta, stack<int> &s, list<int> &visited, vector<vector<int>> &paths) {
-    if (inicial == meta) {
-        printVisited(visited);
-    }
-    else if (s.empty()) {
-        cout << " node not found";
-    }
-    else {
-        inicial = s.top();
-        s.pop();
-        visited.push_back(inicial);
-        for (int i = 0; i < adjList[inicial].size(); i++) {
-            if (!contains(visited, adjList[inicial][i])) {
-                s.push(adjList[inicial][i]);
-                paths[adjList[inicial][i]][0] = inicial;
-            }
-        }
-        dfsHelper(inicial, meta, s, visited, paths);
-    }
-}
-
 string Graph::BFS(int inicial, int meta) {
     stringstream aux;
     queue<int> q;
@@ -178,7 +103,6 @@ string Graph::BFS(int inicial, int meta) {
     vector<vector<int>> paths(nodes, vector<int>(0));
     q.push(inicial);
     bfsHelper(inicial, meta, q, visited, paths);
-    aux << printVisited(visited);
     aux << printPaths(paths, inicial, meta);
     return aux.str();
 }
@@ -227,18 +151,20 @@ bool Graph::contains(list<int> visited, int data) {
 }
 
 string Graph::printPaths(vector<vector<int>> &paths, int inicial, int meta) {
+    vector <string> estados;
+    estados.push_back("México"); estados.push_back("Querétaro"); estados.push_back("San Luis Potosí"); estados.push_back("Guanajuato");
+    estados.push_back("Guerrero"); estados.push_back("Oaxaca"); estados.push_back("Jalisco");
     stringstream aux;
     int node = paths[meta][0];
     stack<int> reverse;
     reverse.push(meta);
-    aux << "path:";
     while (node != inicial) {
         reverse.push(node);
         node = paths[node][0];
     }
     reverse.push(inicial);
     while (!reverse.empty()) {
-        aux << " " << reverse.top();
+        cout << estados[reverse.top()] << endl;
         reverse.pop();
     }
     return aux.str();
