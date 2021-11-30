@@ -3,6 +3,7 @@
 
 #include <string>
 #include <sstream>
+#include <vector>
 
 using namespace std;
 
@@ -16,6 +17,7 @@ class Quadratic {
 		Key initialValue;
 		Value *values;
 		long indexOf(const Key) const;
+		vector<int> precios;
 
     public: 
         Quadratic(unsigned int, Key, unsigned int (*f) (const Key));
@@ -25,6 +27,7 @@ class Quadratic {
         bool put(Key, Value);
 		Value get(const Key);
         void loadHash();
+		vector<int> precioPath(vector<string> &est);
 };
 
 template <class Key, class Value>
@@ -125,11 +128,22 @@ void Quadratic<Key, Value>::despliegaPrecios() const {
 
 template <class Key, class Value>
 void Quadratic<Key, Value>::despliegaEstados() const {
+	int j = 0;
 	for (int i = 0; i < size; i++){
 			if (keys[i] != initialValue){
-			  cout << keys[i] << endl;
+			  cout << j << " " << keys[i] << endl;
+			  j++;
 			}
 	}
+}
+
+template <class Key, class Value>
+vector<int> Quadratic<Key, Value>::precioPath(vector<string> &est) {
+	for (int i = 0; i < est.size(); i++) {
+		int p = get(est[i]);
+		precios.push_back(p);
+	}
+	return precios;
 }
 
 #endif

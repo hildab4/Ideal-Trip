@@ -55,7 +55,9 @@ int main(int argc, char* argv[]) {
             int s; cin >> s; cout << endl;
             cout << "Destino: ";
             int d; cin >> d; cout << endl;
+            cout << "La ruta más corta es: " << endl << endl;
             vector<string> estadosPath = puntos.BFS(s, d, est);
+            cout << endl;
         }
         else if (opc == 3) {
             cout << "Consultar precios de todas las casetas" << endl << "---------------------------" << endl;
@@ -67,7 +69,17 @@ int main(int argc, char* argv[]) {
             int s; cin >> s; cout << endl;
             cout << "Destino: ";
             int d; cin >> d; cout << endl;
+            cout << "La ruta más corta es: " << endl << endl;
             vector<string> estadosPath = puntos.BFS(s, d, est);
+            vector<int> preciosPath = h1.precioPath(estadosPath);
+            cout << endl;
+            int total = 0;
+            for (int i = 0; i < estadosPath.size(); i++) {
+                cout << estadosPath[i] << ": " << preciosPath[i] << endl;
+                total = total + preciosPath[i];
+            }
+            cout << "\nEl total es de: " << total << endl;
+
         }
         else if (opc == 5) {
             cout << "Gracias por visitar Great Travel" << endl;
