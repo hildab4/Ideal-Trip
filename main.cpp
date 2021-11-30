@@ -19,18 +19,6 @@ int main(int argc, char* argv[]) {
     Quadratic <string, int> h1(11, string("empty"), myHash);
     vector<string> est {"México", "Querétaro", "San Luis Potosí", "Guanajuato", "Guerrero", "Oaxaca", "Jalisco"}; 
     h1.loadHash();
-    
-    /*h1.loadHash();
-
-    cout << h1.toString() << endl;
-
-    cout << h1.get("México") << endl;
-
-    puntos.loadGraphList("puntos.txt", 7, 7);
-
-    cout << puntos.printAdjList() << endl;
-
-    cout << puntos.BFS(0, 5, est) << endl;*/
 
     while(true) {
         cout << "------------------------------------------" << endl << "Bienvenido a Great Travel" << endl << endl;
@@ -87,5 +75,4 @@ int main(int argc, char* argv[]) {
             exit(1);
         }
     }
-    // El BFS se usa para la ruta más corta
 }

@@ -27,6 +27,8 @@ Los datos se encuentran en el archivo puntos.txt, con estos se cargan los datos 
 # SICT0301B - Evalúa los componentes
 
 ## Presenta Casos de Prueba correctos y completos para todas las funciones y procedimientos del programa
+* El main funciona al elegir la opción para la operación deseada; desplegar estados solo los imprime en la consola con el índice indicado, mientras que la opción de buscar la ruta más corta entre dos estados, recibe dos datos, ambos son índices de la salida y la partida. La opción de consultar precios de todas las casetas solo imprime el estado y el costo de la caseta; por último, la opción de consultar precios de casetas en mi ruta muestra la ruta más rápida y los precios de cada caseta, al final muestra el total de casetas para esta ruta.
+* En el archivo pruebas.cpp se encuentran casos de prueba completos para utilizar todas las funciones y procedimientos del programa; para utilizarlo hay que copiar el código en el archivo main.cpp y correr el programa, los datos se muestran en la consola.
 
 ## Hace un análisis de complejidad correcto y completo para todo el programa y sus componentes
 * loadGraphList -> El algoritmo lee un archivo y el tiempo que tarda en completar la lectura depende de la cantidad de líneas en el archivo; por lo tanto la complejidad temporal es de O(n) para el peor de los casos.
