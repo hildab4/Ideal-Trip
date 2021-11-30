@@ -17,9 +17,9 @@ int main(int argc, char* argv[]) {
 
     Graph puntos;
     Quadratic <string, int> h1(11, string("empty"), myHash);
+    vector<string> est {"México", "Querétaro", "San Luis Potosí", "Guanajuato", "Guerrero", "Oaxaca", "Jalisco"}; 
     h1.loadHash();
-
-
+    
     /*h1.loadHash();
 
     cout << h1.toString() << endl;
@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
 
     cout << puntos.printAdjList() << endl;
 
-    cout << puntos.BFS(0, 4) << endl;*/
+    cout << puntos.BFS(0, 5, est) << endl;*/
 
     while(true) {
         cout << "------------------------------------------" << endl << "Bienvenido a Great Travel" << endl << endl;
@@ -43,18 +43,19 @@ int main(int argc, char* argv[]) {
         cin >> opc;
         cout << endl;
 
+        puntos.loadGraphList("puntos.txt", 7, 7);
+
         if (opc == 1) {
             cout << "Desplegar estados" << endl << "---------------------------" << endl;
-            h1.despliegaEstados();
+            puntos.despliegaEstados(est);
         }
         else if (opc == 2) {
             cout << "Buscar ruta más corta entre dos estados" << endl << "---------------------------" << endl;
-            puntos.loadGraphList("puntos.txt", 7, 7);
             cout << "Salida: ";
             int s; cin >> s; cout << endl;
             cout << "Destino: ";
             int d; cin >> d; cout << endl;
-            puntos.BFS(s, d);
+            vector<string> estadosPath = puntos.BFS(s, d, est);
         }
         else if (opc == 3) {
             cout << "Consultar precios de todas las casetas" << endl << "---------------------------" << endl;
@@ -62,7 +63,11 @@ int main(int argc, char* argv[]) {
         }
         else if (opc == 4) {
             cout << "Consultar precios de casetas en mi ruta" << endl << "---------------------------" << endl;
-            //Pendiente
+            cout << "Salida: ";
+            int s; cin >> s; cout << endl;
+            cout << "Destino: ";
+            int d; cin >> d; cout << endl;
+            vector<string> estadosPath = puntos.BFS(s, d, est);
         }
         else if (opc == 5) {
             cout << "Gracias por visitar Great Travel" << endl;
@@ -70,6 +75,5 @@ int main(int argc, char* argv[]) {
             exit(1);
         }
     }
-
     // El BFS se usa para la ruta más corta
-} 
+}

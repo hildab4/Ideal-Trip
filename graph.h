@@ -25,7 +25,7 @@ class Graph {
         void addEdgeAdjMatrix(int u, int v);
         void sortAdjList();
         void bfsHelper(int inicial, int meta, queue<int> &q, list<int> &visited, vector<vector<int>> &paths);
-        string printPaths(vector<vector<int>> &paths, int inicial, int meta);
+        vector<string> printPaths(vector<vector<int>> &paths, int inicial, int meta, vector<string> &est);
         string printVisited(list<int> visited);
         bool contains(list<int> visited, int data);
 
@@ -34,7 +34,8 @@ class Graph {
         Graph(int n);
         void loadGraphList(string file, int n, int m);
         string printAdjList();
-        string BFS(int inicial, int meta);
+        vector<string> BFS(int inicial, int meta, vector<string> &est);
+        void despliegaEstados(const vector<string> &est);
 };
 
 Graph::Graph() {
@@ -96,15 +97,15 @@ void Graph::sortAdjList() {
     }
 }
 
-string Graph::BFS(int inicial, int meta) {
+vector<string> Graph::BFS(int inicial, int meta, vector<string> &est) {
     stringstream aux;
     queue<int> q;
     list<int> visited;
     vector<vector<int>> paths(nodes, vector<int>(0));
     q.push(inicial);
     bfsHelper(inicial, meta, q, visited, paths);
-    aux << printPaths(paths, inicial, meta);
-    return aux.str();
+    vector<string> pathEst = printPaths(paths, inicial, meta, est);
+    return pathEst;
 }
 
 void Graph::bfsHelper(int inicial, int meta, queue<int> &q, list<int> &visited, vector<vector<int>> &paths) {
@@ -150,13 +151,11 @@ bool Graph::contains(list<int> visited, int data) {
     }
 }
 
-string Graph::printPaths(vector<vector<int>> &paths, int inicial, int meta) {
-    vector <string> estados;
-    estados.push_back("México"); estados.push_back("Querétaro"); estados.push_back("San Luis Potosí"); estados.push_back("Guanajuato");
-    estados.push_back("Guerrero"); estados.push_back("Oaxaca"); estados.push_back("Jalisco");
+vector<string> Graph::printPaths(vector<vector<int>> &paths, int inicial, int meta, vector<string> &estados) {
     stringstream aux;
     int node = paths[meta][0];
     stack<int> reverse;
+    vector<string> pathEstado;
     reverse.push(meta);
     while (node != inicial) {
         reverse.push(node);
@@ -164,10 +163,18 @@ string Graph::printPaths(vector<vector<int>> &paths, int inicial, int meta) {
     }
     reverse.push(inicial);
     while (!reverse.empty()) {
-        cout << estados[reverse.top()] << endl;
+        string estado = estados[reverse.top()];
+        cout << estado << endl;
+        pathEstado.push_back(estado);
         reverse.pop();
     }
-    return aux.str();
+    return pathEstado; 
+}
+
+void Graph::despliegaEstados(const vector<string> &est) {
+    for (int i = 0; i < est.size(); i++) {
+        cout << i << ": " << est[i] << endl;
+    }
 }
 
 #endif
