@@ -23,7 +23,6 @@ class Quadratic {
         Quadratic(unsigned int, Key, unsigned int (*f) (const Key));
 		~Quadratic();
 		void despliegaPrecios() const; 
-		void despliegaEstados() const;
         bool put(Key, Value);
 		Value get(const Key);
         void loadHash();
@@ -122,17 +121,6 @@ void Quadratic<Key, Value>::despliegaPrecios() const {
 	for (int i = 0; i < size; i++){
 			if (keys[i] != initialValue){
 			  cout << keys[i] << ": " << values[i] << endl;
-			}
-	}
-}
-
-template <class Key, class Value>
-void Quadratic<Key, Value>::despliegaEstados() const {
-	int j = 0;
-	for (int i = 0; i < size; i++){
-			if (keys[i] != initialValue){
-			  cout << j << " " << keys[i] << endl;
-			  j++;
 			}
 	}
 }
