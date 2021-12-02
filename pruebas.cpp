@@ -22,18 +22,31 @@ int main(int argc, char* argv[]) {
 
     puntos.loadGraphList("puntos.txt", 7, 7);
 
+    // Prueba función 1
+    string esperada = "0: México\n1: Querétaro\n2: San Luis Potosí\n3: Guanajuato\n4: Guerrero\n5: Oaxaca\n6: Jalisco";
     cout << "Desplegar estados" << endl << "---------------------------" << endl;
-    puntos.despliegaEstados(est);
+    cout << "\n" <<"1.- esperada " << esperada << "\n 1.- programa " << puntos.despliegaEstados(est) << "\n";
+	cout <<	(!esperada.compare(puntos.despliegaEstados(est)) ? "success\n" : "fail\n");
 
+    // Prueba función 2
+    vector<string> esperada2 {"México", "Guerrero", "Oaxaca"};
     cout << endl << "Buscar ruta más corta entre dos estados" << endl << "---------------------------" << endl;
     cout << "México a Oaxaca" << endl;
     cout << "La ruta más corta es: " << endl << endl;
     vector<string> estadosPath = puntos.BFS(0, 5, est);
+    cout << "\n" <<"2.- esperada " << esperada2[0] << endl << esperada2[1] << endl << esperada2[2] << endl << 
+    "\n 2.- programa " << estadosPath[0] << endl << estadosPath[1] << endl << estadosPath[2] << "\n";
+	if (esperada2 == estadosPath) { 
+        cout << "success\n";
+    } 
+    else{ cout << "fail\n";}
     cout << endl;
 
+    // Prueba función 3
     cout << endl << "Consultar precios de todas las casetas" << endl << "---------------------------" << endl;
-    h1.despliegaPrecios();
+    cout << h1.despliegaPrecios();
 
+    // Prueba función 4
     cout << endl << "Consultar precios de casetas en mi ruta" << endl << "---------------------------" << endl;
     cout << "México a Oaxaca" << endl << endl;
     cout << "La ruta más corta es: " << endl << endl;
