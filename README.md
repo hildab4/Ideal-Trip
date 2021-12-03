@@ -1,5 +1,10 @@
 # TC1031-Integral-B
 
+# Correcciones
+* -> Se agrega el grafo y la búsqueda de información en el grafo.
+* -> Se agrega lectura de archivos, y la consulta de datos en las estructuras.
+* -> Se agrega la complejidad temporal de las funciones.
+
 # Programa para obtener la ruta más corta de un estado a otro
 Los datos se encuentran en el archivo puntos.txt, con estos se cargan los datos al grafo; el usuario indica en el menú inicial la opción a seleccionar por medio de un número, antes mostrado cuando se despliega el menú. Dependiendo de la opción el programa llama a las funciones necesarias para poder llevar a cabo el proceso requerido por el usuario.
 
