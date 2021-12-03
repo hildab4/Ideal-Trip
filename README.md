@@ -9,7 +9,7 @@ Los datos se encuentran en el archivo puntos.txt, con estos se cargan los datos 
 * La información se carga al grafo por medio de la función loadGraphList, la cual crea una lista de adyacencia para almacenar los datos.
 
 ## Usa un algoritmo de búsqueda en grafos adecuado para resolver un problema
-* Por medio de la función BFS, que utiliza también a la función de bfsHelper, se recorre el gráfico para buscar la ruta más corta de un punto inicial a uno final, los cuales son indicados por el usuario en el menú.
+* Por medio de la función BFS, que utiliza también a la función de bfsHelper, se recorre el grafo para buscar la ruta más corta de un punto inicial a uno final, los cuales son indicados por el usuario en el menú.
 
 ## Usa un algoritmo de hashing adecuado para resolver un problema
 * En el Hash se almacenan los datos como Llave, Valor del estado (como llave) y el costo de la caseta (como valor), de esta manera cuando se hace el recorrido se busca el dato por medio de la llave para poder sumar los costos de cada estado por el que pasa.
