@@ -1,4 +1,4 @@
-# TC1031-Integral-B
+# Ideal Trip
 
 # Correcciones
 * -> Se agrega el grafo y la búsqueda de información en el grafo.
