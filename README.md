@@ -1,10 +1,5 @@
 # Ideal Trip
 
-# Correcciones
-* -> Se agrega el grafo y la búsqueda de información en el grafo.
-* -> Se agrega lectura de archivos, y la consulta de datos en las estructuras.
-* -> Se agrega la complejidad temporal de las funciones.
-
 # Programa para obtener la ruta más corta de un estado a otro
 Los datos se encuentran en el archivo puntos.txt, con estos se cargan los datos al grafo; el usuario indica en el menú inicial la opción a seleccionar por medio de un número, antes mostrado cuando se despliega el menú. Dependiendo de la opción el programa llama a las funciones necesarias para poder llevar a cabo el proceso requerido por el usuario.
 
@@ -40,3 +35,8 @@ Los datos se encuentran en el archivo puntos.txt, con estos se cargan los datos 
 * BFS -> El algoritmo recorre los nodos y los bordes de la lista de adyacencia, debido a que debe de recorrer todos en el peor de los casos, la complejidad temporal es de O(n+b). Donde n es la cantidad de nodos y b es la cantidad de bordes.
 * loadHash -> El algoritmo obtiene el índice para la llave, pero en caso de alguna colisión se tendrá que buscar otra posición; por lo que la complejidad temporal es de O(n) para el peor de los casos.
 * get -> El algoritmo obtiene el índice para la llave, pero en caso de alguna colisión se tendrá que recorrer toda la tabla hasta encontrar el valor; por lo que la complejidad temporal es de O(n) para el peor de los casos.
+
+# Correcciones
+* -> Se agrega el grafo y la búsqueda de información en el grafo.
+* -> Se agrega lectura de archivos, y la consulta de datos en las estructuras.
+* -> Se agrega la complejidad temporal de las funciones.
